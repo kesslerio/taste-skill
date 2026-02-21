@@ -1,225 +1,114 @@
 ---
-name: anti-slop-frontend
-description: Creative Technologist & Senior Frontend Engineer skill. Architect digital artifacts that transcend utility — interfaces that feel like physical objects, avant-garde magazines, or precision instruments. Enforces strict anti-patterns, advanced kinetic techniques, and contextual aesthetic modes to eradicate "AI Slop" from every output.
+name: high-agency-frontend
+description: Creative Technologist & Senior Frontend Engineer skill. Architect digital artifacts using measurable constraints, React-first architecture, specific Tailwind + Raw CSS separation, and strict interaction modes to eradicate "AI Slop".
 ---
 
-# Anti-Slop Frontend Skill
+# High-Agency Frontend Skill
 
-## Mission
-Build interfaces that feel like **physical objects**, avant-garde magazines, or precision instruments.  
-**PRIME DIRECTIVE**: Eliminate all generic patterns. If the output resembles a standard template, a Dribbble clone, or a default component library, it is a **failure**.
+## 1. DEFAULT ARCHITECTURE & TOOLING
+
+**Framework & State:**
+- React or Next.js (Server Components by default; `"use client"` strictly at the leaf level for interactive UI).
+- Use local `useState`/`useReducer` for UI state. Global state is only for preventing deep prop-drilling across the component tree.
+- Generate full interaction states proactively: **Loading** (Skeletons, not spinners), **Empty** (designed placeholders), and **Error** (inline feedback).
+
+**Styling Separation:** 
+- **Styling Rule:** Use Tailwind CSS for 90% of styling (layout, colors, spacing). Use raw CSS (or CSS Modules) ONLY for complex `@keyframes`, `clamp()` typography, and pseudo-element grain filters where Tailwind strings become unreadable.
+
+**Animation & DOM:**
+- **No Vanilla JS DOM manipulation** (e.g., `document.querySelector`, `el.addEventListener`). 
+- For complex physics or DOM events, strictly use React patterns: `useRef` and `useEffect`. **Mandatory:** `useEffect` hooks implementing listeners MUST return a cleanup function to prevent memory leaks.
+- Prefer `framer-motion` for complex physics and choreography.
 
 ---
 
-## 1. THE ANTI-PATTERNS (STRICTLY FORBIDDEN)
+## 2. THE ANTI-PATTERNS (STRICTLY FORBIDDEN)
 
-Before writing a single line of CSS, internalize these forbidden patterns.
+Before writing any code, internalize these forced constraints:
 
-### Visual Syntax Errors
-
-| ❌ Forbidden | ✅ Alternative |
+| ❌ Forbidden / Generic | ✅ High-Agency Alternative |
 |---|---|
-| Purple-to-blue tech gradient | Muted editorial tones, grain overlays, or hard geometric color blocks |
-| Neon / outer glow box-shadows | Hard-edged retro shadows, colored shadows matching bg hue, or no shadow at all |
-| Glassmorphism everywhere | Solid opacity layers, dithering patterns, or tactile texture instead of blur |
-| Pure black alpha shadows | Colored shadows (e.g., deep navy on blue bg) or flat neo-brutalist borders |
-| Perfect center alignment | Asymmetric layouts; indent unexpectedly; left-anchor with intentional offset |
-
-### Component Clichés
-
-| ❌ Forbidden | ✅ Alternative |
-|---|---|
-| 3-column rounded bento grid | Broken grids, masonry layouts, or overlapping sections |
-| Rocket / shield / lock icons | Abstract geometry, technical crosshairs, or raw typographic marks |
-| Pill badges (fully rounded) | Square flags, technical labels, 1px bracket borders `[ label ]` |
-| White card + gray border + drop shadow | Negative margins, spacing-defined sections, invisible boundaries |
+| Purple-to-blue linear gradients | Muted editorial tones, solid OLED blacks, or single-accent monochrome |
+| Glassmorphism / `backdrop-blur` everywhere | Solid opacity layers, or highly specific "Liquid Glass" (1px inner border + inset shadow) |
+| Standard `box-shadow: rgba(0,0,0,0.1)` | Tinted ambient shadows matching the background hue, or no shadow (use 1px borders) |
+| Centered bento grids for everything | Asymmetric layouts or massive intentional whitespace (fallback to mobile column) |
+| "Everything is a Card" | Rely on spacing and alignment to group data instead of boxed cards |
 
 ---
 
-## 2. THE CREATIVE ENGINE (ADVANCED TECHNIQUES)
+## 3. DESIGN ENGINEERING DIRECTIVES
 
-### Kinetic Typography — Make Text Liquid
+### Typography Intent
+- **Contextual Selection:** Modern B2B tools excel with clean Sans-Serifs (`Inter`, `Geist`). Do not force Serif fonts unless the context explicitly demands an editorial, luxury, or portfolio aesthetic.
+- **Display Typography:** Add tracking adjustments to large text (e.g., `tracking-tighter leading-none` on massive headers).
 
-- **Velocity Skew**: Text reacts to scroll speed using `transform: skewX()` tied to scroll delta.
-- **Infinite Marquee**: Looping bands of oversized type create momentum and rhythm.
+### Data & Form Patterns
+- **Forms:** Label MUST sit above input. Helper text is optional but should exist in markup. Error text MUST sit below the input. Group elements with a standard `gap-2`.
+
+### Responsive Stability
+- **Mobile Override:** Any asymmetric or complex grid layout on desktop (`md:`) MUST collapse gracefully to a clean, single-column layout (`w-full`, `px-4`, `py-8`) on viewports `< 768px`. Do not allow horizontal overflow.
+
+---
+
+## 4. ADVANCED TECHNIQUES (When explicitly requested)
+
+These are reserved for high-end creative requests. Do NOT apply these to standard dashboards or simple landing pages unless explicitly asked.
+
+### Performance-Safe Grain
+- **Rule:** Dithering and grain destroy mobile GPUs if applied to scrolling containers.
+- **Execution:** Apply grain filters exclusively to fixed, pointer-event-none pseudo-elements (`fixed inset-0 z-50 pointer-events-none`) and NEVER to scrolling containers to prevent continuous GPU repaints.
   ```css
-  /* Marquee base pattern */
-  @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-  .marquee-inner { animation: marquee 12s linear infinite; white-space: nowrap; }
-  ```
-- **Mix-Blend-Mode Text**: Text color flips as it passes over images.
-  ```css
-  .kinetic-heading { mix-blend-mode: difference; color: white; }
-  ```
-- **Masked Typography**: Text acts as a window revealing video/gradient underneath via `background-clip: text`.
-
-### Immersive Scrolling — Control Time
-
-- **Parallax Stacking**: Sections don't scroll past — they **stack like cards** using `position: sticky; top: 0`.
-- **Horizontal-Vertical Hybrid**: Vertical scroll triggers horizontal gallery movement.
-  - Use `IntersectionObserver` to switch scroll axis on a pinned container.
-- **Sticky Pinning**: Lock a visual element (image / 3D canvas) while narrative text scrolls over it.
-  ```css
-  .pinned-visual { position: sticky; top: 10vh; height: 80vh; }
-  .scroll-narrative { position: relative; z-index: 10; }
-  ```
-
-### Micro-Interactions — The Tactile Feel
-
-- **Magnetic Elements**: Buttons physically pull toward the cursor.
-  ```js
-  el.addEventListener('mousemove', e => {
-    const { left, top, width, height } = el.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) * 0.3;
-    const y = (e.clientY - top - height / 2) * 0.3;
-    el.style.transform = `translate(${x}px, ${y}px)`;
-  });
-  el.addEventListener('mouseleave', () => el.style.transform = '');
-  ```
-- **Cursor Displacement**: Cursor acts as a spotlight, lens, or distortion field.
-  ```css
-  .cursor-glow { 
-    position: fixed; pointer-events: none; 
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
-  }
-  ```
-- **Dithering & Grain**: Replace smooth gradients with CSS noise for "Lo-Fi High-Tech" texture.
-  ```css
-  /* SVG noise filter approach */
-  .grain-overlay::after {
-    content: '';
-    position: absolute; inset: 0;
+  /* RAW CSS allowed here for readability */
+  .grain-overlay {
+    position: fixed; inset: 0; z-index: 50; pointer-events: none;
     background-image: url("data:image/svg+xml,..."); /* base64 noise SVG */
     opacity: 0.04;
-    pointer-events: none;
   }
   ```
 
----
+### Staggered Reveal
+- Use CSS cascades or Framer Motion `staggerChildren` to reveal elements sequentially. Avoid mounting 20 list items instantly.
+  ```css
+  .reveal-item { animation-delay: calc(var(--index) * 100ms); }
+  ```
 
-## 3. CONTEXTUAL MODES — THE VIBE CHECK
-
-**Select EXACTLY ONE mode per project. Do not mix randomly.**
-
-### MODE A — THE "EDITORIAL"
-*For: Content sites, portfolios, blogs, magazines*
-
-> The web page is a printed fashion magazine that has come alive.
-
-- **Typography**: Massive serif headers (Playfair Display, Cormorant Garamond). Text overlaps images.
-- **Layout**: Asymmetric. Text floats over imagery. Whitespace is aggressive.
-- **Palette**: Off-white `#F5F0E8` + Deep ink black `#0D0B08` + One clash color (Acid Green `#BFFF00` or International Orange `#FF4500`)
-- **Key Tech**: Smooth parallax, text reveal animations (clip-path), mix-blend-mode overlaps
-- **Font Stack**: `'Cormorant Garamond', 'Playfair Display', Georgia, serif`
-
-### MODE B — THE "PRECISION INSTRUMENT"
-*For: Dashboards, tools, data products, developer utilities*
-
-> The interface is a physical tool — a Braun calculator or a Teenage Engineering synthesizer.
-
-- **Typography**: Monospace mandatory for data. Small uppercase labels. Stark scale contrast.
-- **Layout**: 1px rule lines dividing sections. Crosshairs. Coordinate numbers as decorative elements.
-- **Palette**: Muted greys, dust, clay, sage. High-contrast strokes. Film look — no pure black.
-  - Background: `#F4F1EC` | Stroke: `#2A2A2A` | Accent: `#D4603A` (rust)
-- **Key Tech**: Snap transitions, slot-machine number animations, dense info without clutter
-- **Font Stack**: `'JetBrains Mono', 'IBM Plex Mono', monospace`
-
-### MODE C — THE "INSTALLATION"
-*For: Landing pages, experiences, portfolios, brand statements*
-
-> The browser is a canvas for art. Physics governs the layout.
-
-- **Typography**: Fluid sizing (`clamp()`). Brutalist grotesque or mono. Abstract over literal.
-- **Layout**: Full-viewport. Organic blobs, brutalist raw HTML, or fluid simulations.
-- **Palette**: Monochrome or dark mode with subtle noise. One controlled color surprise.
-  - Background: `#080808` | Foreground: `#F0F0F0` | Noise opacity: 3-5%
-- **Key Tech**: WebGL-style distortion (CSS filters + SVG), cursor trails, fluid typography
-- **Font Stack**: `'Space Grotesk', 'DM Mono', sans-serif`
+### Magnetic Micro-physics
+- For high-end portfolios only. Buttons physically pull toward the cursor.
+- **Execution:** Use Framer Motion `useTransform` mapped to mouse coordinates, NOT vanilla JS.
 
 ---
 
-## 4. VISUAL SYSTEM — SOPHISTICATED CHAOS
+## 5. EXECUTION SCENARIOS (Concrete Snippets)
 
-### Typography Scale
-```css
-/* The Extremes — use both ends, nothing in between */
-.headline    { font-size: clamp(4rem, 12vw, 10rem); line-height: 0.9; letter-spacing: -0.03em; }
-.subheadline { font-size: clamp(1.5rem, 3vw, 2.5rem); }
-.label       { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; }
-.body        { font-size: 1rem; line-height: 1.7; max-width: 60ch; }
+### Scenario A: Complex Header (Tailwind + Raw CSS approach)
+- **Concept:** A massive headline scaling fluidly without huge Tailwind bracket strings.
+```jsx
+// HTML (Tailwind for layout)
+<h1 className="fluid-headline text-zinc-900 tracking-tighter">
+  Vanguard
+</h1>
+// CSS (Raw CSS for fluid math)
+.fluid-headline { font-size: clamp(3rem, 8vw, 8rem); line-height: 0.9; }
 ```
 
-### Layout Principles
-- **Neo-Brutalism**: Raw borders (`border: 1px solid`), visible grid lines (`outline`), unstyled HTML purposefully exposed.
-- **Overlap**: Titles sit on top of photos. Buttons straddle borders. Use `margin-top: -2rem` aggressively.
-- **Whitespace**: 40% of viewport can be empty to frame a single element. Emptiness is a design choice.
-- **Grid**: Avoid 12-column. Use `grid-template-columns: 3fr 1fr` or asymmetric definitions.
-
-### Motion System
-```css
-/* Spring physics — no linear animations */
-* { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); } /* spring overshoot */
-
-/* Stagger cascade — reveal line by line */
-.reveal-line { 
-  opacity: 0; transform: translateY(1.2em);
-  animation: reveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-@keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+### Scenario B: High-End Form Input
+- **Concept:** Predictable structure, explicit states, no guessing.
+```jsx
+<div className="flex flex-col gap-2 w-full max-w-md">
+  <label className="text-sm font-medium text-zinc-800">Email</label>
+  <input className="px-4 py-2 border border-zinc-200 focus:ring-2 focus:ring-zinc-900 rounded-none transition-all" />
+  <span className="text-xs text-red-500">Error message placeholder</span>
+</div>
 ```
 
 ---
 
-## 5. EXECUTION SCENARIOS
+## 6. PRE-FLIGHT CHECKLIST
 
-### Scenario: Login Form
-- ❌ **AI Flop**: Centered card, blue button, shadow.
-- ✅ **Anti-Slop Solution**: Split screen. Left = shifting noise curtain. Right = Technical UI — inputs defined only by 1px bottom borders. Submit = magnetic text label that follows cursor. Strictly monospace.
-
-### Scenario: Portfolio
-- ❌ **AI Flop**: Hero image + 3 text columns.
-- ✅ **Anti-Slop Solution**: User's name as an infinite vertical marquee loop. Projects as parallax-stacked images that reveal on scroll. Cursor uses `mix-blend-mode: difference`, inverting colors as it moves.
-
-### Scenario: Dashboard
-- ❌ **AI Flop**: Sidebar, white cards, drop shadows.
-- ✅ **Anti-Slop Solution**: Blueprint rule lines (1px grid). No shadows. Grainy off-white bg. Data updates trigger slot-machine number shuffle. Looks like a financial terminal.
-
----
-
-## 6. QUALITY ASSURANCE CHECKLIST
-
-Before outputting any code, verify:
-
-- [ ] **Safe?** — Does the creativity break usability on mobile? If yes, simplify mobile while keeping desktop wild.
-- [ ] **Not Boring?** — Is there a "Standard Card" or a Tailwind-blue button? If yes, kill it.
-- [ ] **Not Slop?** — Does it look like a template? If yes, restart.
-- [ ] **Is it Art?** — Does it feel like a designed object? If yes, ship it.
-
----
-
-## 7. FORBIDDEN COMBINATIONS (QUICK REFERENCE)
-
-```
-purple → blue gradient       ❌
-rounded pill badge            ❌
-white card + gray border      ❌
-centered hero with subtext    ❌
-rocket/shield icon            ❌
-glassmorphism as default      ❌
-linear animation timing       ❌
-12-column bento grid          ❌
-pure black shadow             ❌
-centered everything           ❌
-```
-
----
-
-## 8. RESOURCE REFERENCES
-
-- **Fonts**: [Google Fonts — Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono), [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
-- **Inspiration (study, don't clone)**: Refinery29, Are.na, Cargo Collective, Virgil Abloh's work
-- **CSS Tricks**: `mix-blend-mode`, `clip-path`, `scroll-timeline`, `@starting-style`
-- **Examples**: See `examples/` directory in this skill for implementation patterns.
+Before generating your final React output, verify internally:
+- [ ] Is my styling separated correctly (Tailwind for 90%, CSS for complex clamps/keyframes)?
+- [ ] Did I avoid Vanilla JS `el.addEventListener` in favor of React `useEffect` / `useRef`?
+- [ ] If using `useEffect` for events or animations, is there a strict cleanup function?
+- [ ] Is grain/noise applied ONLY to a `fixed inset-0 pointer-events-none` container?
+- [ ] Are structural states (Loading skeletons, Empty, Errors) included?
+- [ ] Does the mobile view collapse safely?
