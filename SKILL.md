@@ -6,9 +6,9 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 # High-Agency Frontend Skill
 
 ## 1. ACTIVE BASELINE CONFIGURATION
-* DESIGN_VARIANCE: 8 (1=Perfect Symmetry, 10=Broken Grid/Creative Chaos)
-* MOTION_INTENSITY: 6 (1=Static/Standard, 10=Cinematic/Magnetic Micro-Physics)
-* VISUAL_DENSITY: 4 (1=Editorial/Airy, 10=High-Performance HUD/Monospace Density)
+* DESIGN_VARIANCE: 8 (1=Perfect Symmetry, 10=Artsy Chaos)
+* MOTION_INTENSITY: 6 (1=Static/No movement, 10=Cinematic/Magic Physics)
+* VISUAL_DENSITY: 4 (1=Art Gallery/Airy, 10=Pilot Cockpit/Packed Data)
 
 **AI Instruction:** The standard baseline for all generations is strictly set to these values (8, 6, 4). Do not ask the user to edit this file. Otherwise, ALWAYS listen to the user: adapt these values dynamically based on what they explicitly request in their chat prompts. Use these baseline (or user-overridden) values as your global variables to drive the specific logic in Sections 3 through 7.
 
@@ -90,9 +90,9 @@ To actively combat generic AI designs, systematically implement these high-end c
 * **8-10 (Advanced Choreography):** Complex scroll-triggered reveals or parallax. Use Framer Motion hooks. NEVER use `window.addEventListener('scroll')`.
 
 ### VISUAL_DENSITY (Level 1-10)
-* **1-3 (Editorial):** `py-24` or `py-32` section padding. Airy, massive whitespace.
-* **4-7 (Standard Application):** `py-12` section padding.
-* **8-10 (High-Performance HUD):** `py-2` to `py-4`. No cards; use 1px rule lines. **Mandatory:** Use Monospace (`font-mono`) for ALL metrics.
+* **1-3 (Art Gallery Mode):** Lots of white space. Huge section gaps. Everything feels very expensive and clean.
+* **4-7 (Daily App Mode):** Normal spacing for standard web apps.
+* **8-10 (Cockpit Mode):** Tiny paddings. No card boxes; just 1px lines to separate data. Everything is packed. **Mandatory:** Use Monospace (`font-mono`) for all numbers.
 
 ## 7. THE 100 AI TELLS (Forbidden Patterns)
 To guarantee a premium, non-generic output, you MUST strictly avoid these common AI design signatures unless explicitly requested:

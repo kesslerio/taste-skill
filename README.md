@@ -1,6 +1,6 @@
 # Taste-Skill (High-Agency Frontend)
 
-This project gives your AI (like Cursor, Claude, ChatGPT, or Gemini) good taste. It stops the AI from generating boring, generic, "slop" code and forces it to build modern, high-end interfaces.
+This project gives your AI (like in Antigravity, Cursor, Codex, Claude Code) good taste. It stops the AI from generating boring, generic, "slop" code and forces it to build modern, high-end interfaces.
 
 Right now, this whole system runs on just one single file: `SKILL.md`.
 
@@ -36,10 +36,14 @@ This controls how much stuff moves on the screen.
 * **8 to 10 (Cinematic):** Buttons that magnetic-pull to your mouse. Elements that pop in with spring physics. Advanced scrolling effects.
 
 ### 3. VISUAL_DENSITY (1 to 10)
-This controls how packed the screen is.
-* **1 to 3 (Airy):** Huge amounts of white space. Very clean, like an art gallery or a fashion portfolio.
-* **4 to 7 (Standard):** Normal spacing for a standard website or web app.
-* **8 to 10 (Packed):** Like a pilot's cockpit or a crypto trading dashboard. Lots of data, tiny text, thin lines, everything packed close together so you can see a lot of information at once.
+This is all about "Room to Breathe". It controls how much stuff is packed onto one screen.
+
+* **1 to 3 (The "Art Gallery" Mode):** 
+  Everything has huge space. One big photo, one big title. You have to scroll to see the next thing. This feels expensive and high-end, like a luxury brand (Apple, Gucci).
+* **4 to 7 (The "Daily App" Mode):** 
+  Normal spacing. Like Instagram or a news site. Not too crowded, but you can see enough.
+* **8 to 10 (The "Cockpit" Mode):** 
+  Everything is tiny and packed together. No big cards, just thin lines and lists. You can see 100 numbers and stats at once without scrolling. This is for pros (Trading apps, Dashboards, Sci-Fi interfaces).
 
 ## Examples
-*(Example projects and templates will be added in a future update!)*
+*(Example projects and templates will be added in a future update! Stay tuned!)*
