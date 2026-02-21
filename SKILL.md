@@ -8,13 +8,14 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 ## 1. DEFAULT ARCHITECTURE & CONVENTIONS
 Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
 
-* **⚠️ DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
+* **DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
 * **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). 
-    * **⚠️ RSC SAFETY:** Global state (Context/Zustand) works ONLY in Client Components. In Next.js, you MUST wrap global state providers in a separate `"use client"` component (e.g. `providers.tsx`) before including them in the `layout.tsx` tree.
+    * **RSC SAFETY:** Global state (Context/Zustand) works ONLY in Client Components. In Next.js, you MUST wrap global state providers in a separate `"use client"` component (e.g. `providers.tsx`) before including them in the `layout.tsx` tree.
 * **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state strictly for deep prop-drilling avoidance.
 * **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. 
-    * **⚠️ TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
-    * **⚠️ T4 CONFIG GUARD:** For v4, do NOT use `tailwindcss` plugin in `postcss.config.js`. Use `@tailwindcss/postcss` or the Vite plugin.
+    * **TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
+    * **T4 CONFIG GUARD:** For v4, do NOT use `tailwindcss` plugin in `postcss.config.js`. Use `@tailwindcss/postcss` or the Vite plugin.
+* **ANTI-EMOJI POLICY [CRITICAL]:** NEVER use emojis in code, markup, text content, or alt text. Replace symbols with high-quality icons (Radix, Phosphor) or clean SVG primitives. Emojis are BANNED.
 * **Responsiveness & Spacing:**
   * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
   * Contain page layouts using `max-w-7xl mx-auto`.
@@ -29,40 +30,41 @@ Controls symmetry and layout offsets.
 * **1-3 (Predictable):** Flexbox `justify-center`, strict 12-column symmetrical grids, equal paddings.
 * **4-7 (Offset):** Use `margin-top: -2rem` overlapping, varied image aspect ratios (e.g., 4:3 next to 16:9), left-aligned headers over center-aligned data.
 * **8-10 (Asymmetric):** Masonry layouts, CSS Grid with fractional units (e.g., `grid-template-columns: 2fr 1fr 1fr`), massive empty zones (`padding-left: 20vw`). 
-* **⚠️ MOBILE OVERRIDE:** For levels 4-10, any asymmetric layout above `md:` MUST aggressively fall back to a strict, single-column layout (`w-full`, `px-4`, `py-8`) on viewports `< 768px` to prevent horizontal scrolling and layout breakage.
+* **MOBILE OVERRIDE:** For levels 4-10, any asymmetric layout above `md:` MUST aggressively fall back to a strict, single-column layout (`w-full`, `px-4`, `py-8`) on viewports `< 768px` to prevent horizontal scrolling and layout breakage.
 
 ### [ MOTION_INTENSITY: 5 ]
 Controls animation complexity *working within the pre-defined project dependencies*.
 * **1-3 (Static):** No automatic animations. CSS `:hover` and `:active` states only.
 * **4-7 (Fluid CSS):** Use `transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1)`. Use `animation-delay` cascades for load-ins. Focus strictly on `transform` and `opacity`. **Caution:** Apply `will-change: transform` dynamically only to deeply animating elements (and remove it post-animation) rather than applying it globally, to conserve GPU memory.
 * **8-10 (Advanced Choreography):** Complex scroll-triggered reveals or parallax.
-    * **⚠️ PERFORMANCE GUARD:** NEVER use `window.addEventListener('scroll')` in React. Use exclusively Framer Motion hooks like `useScroll` or `IntersectionObserver`. For parallax, map scroll progress to `useTransform`.
+    * **PERFORMANCE GUARD:** NEVER use `window.addEventListener('scroll')` in React. Use exclusively Framer Motion hooks like `useScroll` or `IntersectionObserver`. For parallax, map scroll progress to `useTransform`.
 
-### [ VISUAL_DENSITY: 4 ]
+### [ VISUAL_DENSITY: 5 ]
 Controls spacing tokens and typography tracking.
-* **1-3 (Editorial):** `py-24` or `py-32` section padding. `tracking-tighter` on massive display headers.
-* **4-7 (Standard Application):** `py-12` section padding. 
-* **8-10 (Data-Heavy HUD):** `py-2` to `py-4`. 1px rule lines (`border-b border-gray-200`). Use Monospace (`font-mono`) strictly for numerical data and technical labels.
+* **1-3 (Editorial):** `py-24` or `py-32` section padding. Airy, massive whitespace.
+* **4-7 (Standard Application):** `py-12` section padding.
+* **8-10 (High-Performance HUD):** `py-2` to `py-4`. No cards; use 1px rule lines (`border-b`, `divide-y`). **Mandatory:** Use Monospace (`font-mono`) for ALL numerical data and metrics. 
 
 ## 3. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:
 
 **Rule 1: Deterministic Typography**
 * **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none`.
-    * **⚠️ ANTI-SLOP:** Discourage `Inter` for "Premium" or "Creative" vibes. Force unique character using `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi`.
+    * **ANTI-SLOP:** Discourage `Inter` for "Premium" or "Creative" vibes. Force unique character using `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi`.
+    * **TECHNICAL UI RULE:** Serif fonts are strictly BANNED for Dashboard/Software UIs. For these contexts, use exclusively high-end Sans-Serif pairings (`Geist` + `Geist Mono` or `Satoshi` + `JetBrains Mono`).
 * **Body/Paragraphs:** Default to `text-base text-gray-600 leading-relaxed max-w-[65ch]`.
 
 **Rule 2: Color Calibration**
 * **Constraint:** Max 1 Accent Color. Saturation < 80%.
-* **⚠️ THE LILA BAN:** The "AI Purple/Blue" glow aesthetic is strictly BANNED for SaaS/Business contexts. No purple button glows, no neon gradients. Use professional, high-contrast neutrals (Zinc/Slate) with sharp, singular accents (e.g. Emerald, Electric Blue, or Deep Rose).
-* **Gradients:** Mesh-gradients allowed. Purple-to-blue linear gradients are BANNED.
+* **THE LILA BAN:** The "AI Purple/Blue" aesthetic is strictly BANNED. No purple button glows, no neon gradients. Use absolute neutral bases (Zinc/Slate) with high-contrast, singular accents (e.g. Emerald, Electric Blue, or Deep Rose).
+* **COLOR CONSISTENCY:** Stick to one palette for the entire output. Do not fluctuate between warm and cool grays within the same project.
 
 **Rule 3: Layout Diversification**
-* **⚠️ ANTI-CENTER BIAS:** Centered Hero/H1 sections are strictly BANNED when `LAYOUT_VARIANCE > 4`. Force "Split Screen" (50/50), "Left Aligned content/Right Aligned asset", or "Asymmetric White-space" structures.
+* **ANTI-CENTER BIAS:** Centered Hero/H1 sections are strictly BANNED when `LAYOUT_VARIANCE > 4`. Force "Split Screen" (50/50), "Left Aligned content/Right Aligned asset", or "Asymmetric White-space" structures.
 
 **Rule 4: Materiality, Shadows, and "Anti-Card Overuse"**
-* **Constraint:** Standard `box-shadow: rgba(0,0,0,0.1)` is outdated. Do not habitually wrap every section in a bordered card.
-* **Execution:** Use cards ONLY when elevation communicates hierarchy and grouping CANNOT be achieved via spacing and alignment alone. When a shadow is used, tint it to the background hue (e.g., `shadow-[0_8px_30px_rgba(14,30,37,0.12)]`), or use crisp `1px solid var(--border-color)` lines. 
+* **DASHBOARD HARDENING:** For `VISUAL_DENSITY > 7`, generic card containers are strictly BANNED. Use logic-grouping via `border-t`, `divide-y`, or purely negative space. Data metrics should breathe without being boxed in unless elevation (z-index) is functionally required.
+* **Execution:** Use cards ONLY when elevation communicates hierarchy. When a shadow is used, tint it to the background hue.
 
 **Rule 5: Interactive UI States**
 * **Mandatory Generation:** LLMs naturally generate "static" successful states. You MUST implement full interaction cycles:
