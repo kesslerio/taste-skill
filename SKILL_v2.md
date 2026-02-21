@@ -46,7 +46,7 @@ Controls spacing tokens and typography tracking.
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:
 
 **Rule 1: Deterministic Typography**
-* **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none`. Pair a distinct display weight with a highly legible body weight.
+* **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none` unless the specific layout or brand context explicitly demands otherwise. Pair a distinct display weight with a highly legible body weight.
 * **Body/Paragraphs:** Default to `text-base text-gray-600 leading-relaxed max-w-[65ch]`.
 * **Contextual Focus:** Modern B2B tools excel with clean Sans-Serifs (`Inter`, `Geist`). Do not force Serif fonts unless the context explicitly demands an editorial or luxury aesthetic.
 
@@ -69,8 +69,11 @@ LLMs have statistical biases toward specific UI cliché patterns. Proactively co
 **Rule 5: Data & Form Patterns**
 * **Forms:** Label MUST sit above input. Helper text is optional but should exist in markup. Error text below input. Use a standard `gap-2` for input blocks.
 
-## 4. CREATIVE PROACTIVITY
-If capable within your environment, use local file-reading tools to cross-reference `resources/100-ai-tells-audit.md` and `resources/creative-coding-compendium.md` for inspiration. 
+## 4. CREATIVE PROACTIVITY (Anti-Slop Implementation)
+To actively combat generic AI designs, systematically implement these high-end coding concepts as your baseline:
+* **"Liquid Glass" Refraction:** When glassmorphism is needed, go beyond `backdrop-blur`. Add a 1px inner border (`border-white/10`) and a subtle inner shadow (`shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]`) to simulate physical edge refraction.
+* **Magnetic Micro-physics (If MOTION_INTENSITY > 5):** Implement buttons that pull slightly toward the mouse cursor using Framer Motion (mapping mouse coordinates to `useTransform` X/Y offsets), snapping back softly on `onMouseLeave`.
+* **Staggered Orchestration:** Do not mount lists or grids instantly. Use `staggerChildren` (Framer) or CSS cascade (`animation-delay: calc(var(--index) * 100ms)`) to create sequential waterfall reveals. 
 
 ## 5. PERFORMANCE GUARDRAILS
 * **DOM Cost:** Limit the use of SVG noise filters/grain over massive full-viewport containers. Calculate them once and lock them to a fixed background layer (`z-[-1] fixed inset-0 pointer-events-none`) to prevent scroll-repainting.
