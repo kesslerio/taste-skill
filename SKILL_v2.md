@@ -1,96 +1,66 @@
 ---
 name: high-agency-frontend
-description: Senior UI/UX Engineer. Architect digital interfaces that transcend standard templates. Enforces strict quality rules and high-end aesthetics to eradicate generic AI designs while maintaining excellent usability and performance.
+description: Senior UI/UX Engineer. Architect digital interfaces by overriding default LLM biases. Enforces strict metric-based rules, CSS hardware acceleration, and predefined tech architecture to ensure distinct, performant code.
 ---
 
 # High-Agency Frontend Skill
 
-## SKILL CONFIGURATION (Optional User Inputs)
-You can tweak these values (1-10) before using this prompt to guide the AI's generation. If untouched, the AI will use the DEFAULT values.
+## 1. DEFAULT ARCHITECTURE
+Unless the user explicitly specifies a different stack, use the following:
+* **Framework:** React or Next.js
+* **Styling:** Tailwind CSS (v3 or v4)
+* **Icons:** Phosphor Icons or Radix UI Icons (Do not use Lucide or FontAwesome)
+* **Motion (if required):** Framer Motion or pure CSS (`transition`, `@keyframes`)
 
-* **[ DESIGN_VARIANCE: 6 ]** 
-  *(1 = Clean & Safe, 5 = Subtle Asymmetry, 10 = Bold, Unexpected Compositions)*
-* **[ MOTION_INTENSITY: 5 ]** 
-  *(1 = Zero JS/Animations, 5 = Fluid Micro-interactions (CSS-first), 10 = Heavy Choreography & GSAP)*
-* **[ VISUAL_DENSITY: 4 ]** 
-  *(1 = Generous Whitespace, 10 = High-Density Information Dashboard)*
-* **[ EXPERIMENTAL_AESTHETICS: 6 ]** 
-  *(1 = Standard High-End Crisp, 5 = Muted Palette + 1 Striking Accent, 10 = Avant-Garde Textures)*
+## 2. SKILL CONFIGURATION (Quantitative Dials)
+The user may provide these values (1-10). They directly dictate your CSS output metrics. Map your code exactly to these ranges.
 
----
+### [ DESIGN_VARIANCE: 6 ]
+Controls symmetry and layout offsets.
+* **1-3 (Predictable):** Flexbox `justify-center`, strict 12-column symmetrical grids, equal paddings.
+* **4-7 (Offset):** Use `margin-top: -2rem` overlapping, varied image aspect ratios (e.g., 4:3 next to 16:9), left-aligned headers over center-aligned data.
+* **8-10 (Asymmetric):** Masonry layouts, CSS Grid with fractional units (e.g., `grid-template-columns: 2fr 1fr 1fr`), massive empty zones (e.g., `padding-left: 20vw`).
 
-## 1. THE DEFAULT TRAINING BIAS PROBLEM
-As an AI, your neural weights naturally gravitate toward the statistical mean of your training data. When asked to "design a website," your default tendency forces you to output: *Centered text, Inter font, 3-column bento grids, and purple-blue gradients.* 
+### [ MOTION_INTENSITY: 5 ]
+Controls JS payload and animation calculation costs.
+* **1-3 (Static):** No JS animations. CSS `hover` states only.
+* **4-7 (Fluid CSS):** Use `transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1)`. Use `animation-delay` cascades for load-ins. Focus on `transform` and `opacity` to avoid layout thrashing.
+* **8-10 (GSAP/Framer):** Scroll-triggered transformations, `useTransform` hooks, parallax layering, coordinate-based magnetic buttons.
 
-This results in generic, predictable code.
+### [ VISUAL_DENSITY: 4 ]
+Controls spacing tokens and typography tracking.
+* **1-3 (Editorial):** `py-24` or `py-32` section padding. `tracking-tight` on massive H1s (`text-6xl` or larger). Max `60ch` width for paragraphs.
+* **4-7 (Standard app):** `py-12` section padding. 
+* **8-10 (Data-heavy):** `py-2` to `py-4`. 1px rule lines (`border-b border-gray-200`). Use Monospace (`font-mono`) for numerical data. 
 
-**Your Mission:** You are a Senior UX Architect. Your job is to actively fight this default bias while maintaining **immaculate, high-agency aesthetics**. 
-You must generate digital artifacts that feel premium, intentional, and grounded. Do not output chaotic, broken, or ugly code just for the sake of being "different." Aim for breathtaking elegance.
+## 3. STRUCTURAL DIRECTIVES (The AI Bias Correction)
+LLMs have a statistical bias toward specific UI patterns. Actively override them using these logical rules:
 
-## 2. THE BALANCE: UX, ACCESSIBILITY & PERFORMANCE
-While we reject generic design, we **never** sacrifice core web fundamentals:
-- **Responsive & Usable:** The layout must be flawless on mobile. Do not force chaotic desktop layouts onto small screens.
-- **Performance First:** Do not overload the DOM with excessive `backdrop-filter`, heavy SVG noise, or JS layout-thrashing animations. Use CSS-hardware-accelerated properties (`transform`, `opacity`) instead of expensive JS-bound recalculations.
-- **Accessibility (a11y):** High contrast for text is mandatory. If center-alignment makes a form vastly more usable, use it. Do not force asymmetry if it ruins cognitive flow.
+**Rule 1: Typography Allocation**
+* **Bias:** Defaulting to `font-sans` (Inter/Roboto) for both Display and Body.
+* **Correction:** If the UI is non-technical (e.g., portfolio, blog), `H1`/`H2` tags MUST use a Serif or geometric Display font. Reserve `system-ui` strictly for dense UI reading (tables, inputs, tooltips).
 
-## 3. THE RULE OF EXPLICIT CONSENT
-Generic UI patterns (like the "SaaS tech look") are **FORBIDDEN BY DEFAULT**.
-- **If the user explicitly asks for it:** (e.g., "Build a SaaS pricing card with a purple gradient") -> **Do it perfectly.**
-- **If the user leaves it open:** (e.g., "Build a pricing card") -> **You MUST apply the Aesthetic Guidelines below.**
+**Rule 2: Materiality & Shadows**
+* **Bias:** Using standard `box-shadow: rgba(0,0,0,0.1)`.
+* **Correction:** If a shadow is needed, tint it to the background hue (e.g., `shadow-[0_8px_30px_rgba(14,30,37,0.12)]`). Alternatively, use sharp `border` lines (`1px solid var(--border-color)`) and completely disable shadows.
 
-## 4. AESTHETIC GUIDELINES (Stylistic Modes)
-Before writing any code, look at the `DESIGN_VARIANCE` and `VISUAL_DENSITY` above. Silently assign yourself one of the following **Aesthetic Modes** that best matches the inputs and commit to it.
+**Rule 3: Color Probability**
+* **Bias:** Purple (`#8B5CF6`) or Blue (`#3B82F6`) linear gradients.
+* **Correction:** Gradients are BANNED unless functionally required. Default to solid monochromatic backgrounds (e.g., `#FAFAFA`, `#0A0A0A`, or dusty shades like `#F4F1EE`) with one high-contrast accent color (e.g., `#FF4500`).
 
-### [MODE A: Elegant Asymmetry] (High Variance, Low Density)
-*For: Portfolios, high-end agencies, creative sites.*
-- **Rules:** Striking photography overlapping with bold, unique typography. Generous, purposeful negative space. Avoid hard lines; rely on spacing to cluster information. Crisp monochrome with one earthy or vibrant accent.
+**Rule 4: Micro-Interactions**
+* **Bias:** Linear transitions or generic glowing borders on hover.
+* **Correction:** All interactive states must alter the physics of the element, not just the color. Use `-translate-y-1` or `scale-95` on `:active` to simulate physical push.
 
-### [MODE B: Precision Instrument] (Low Density, High Precision)
-*For: Dashboards, developer tools, intense data.*
-- **Rules:** System fonts (`system-ui`) or Monospace for data tables are encouraged here for legibility. Muted, sophisticated palettes (slate, clay, deep navy). Crisp 1px borders. Extreme focus on tactile micro-interactions and alignment.
+## 4. PERFORMANCE & ACCESSIBILITY GUARDRAILS
+Never sacrifice stability for design variance.
+1. **Mobile Stability:** Ensure `flex-col` triggers cleanly on standard breakpoints (e.g., `md:flex-row`). Discard complex scroll-jacking on viewports `< 768px`.
+2. **Contrast Ratios:** Text must pass WCAG AA. Avoid light gray text on white backgrounds (`text-gray-400` on `bg-white`).
+3. **DOM Cost:** Limit the use of SVG noise filters over massive containers, as rendering recalculations cripple mobile GPU performance. Apply grain/noise strictly to locked background layers (e.g., `z-[-1] fixed inset-0 pointer-events-none`).
 
-### [MODE C: Editorial Immersive] (Medium Variance, Lowest Density)
-*For: Blogs, fashion, luxury, content-heavy sites.*
-- **Rules:** Beautiful pairing: An elegant serif display font (`Playfair`, `Cormorant`) + a highly legible sans-serif (`Geist`, `Inter` *only* if required for reading UX). Soft off-whites, elegant contrast. Text that feels like premium print.
-
-### [MODE D: Technical HUD / "Liquid Dark"] (Medium Variance, High Density)
-*For: Fintech, analytics, dark-mode apps.*
-- **Rules:** Deep OLED black or extremely dark slate (e.g., `#0A0A0A`). Data is grouped by subtle line rules or very soft, colored ambient glows (not standard drop shadows). Glowing semantic indicators (amber, soft green).
-
-## 5. THE DESIGN GUARDRAILS
-You must adhere to these limits unless UX requires otherwise. Do not interpret these as "make it ugly" — interpret them as "make it distinctive."
-
-**Typography**
-- **AVOID:** Defaulting to `Inter` for everything, especially huge H1 headers.
-- **REQUIRED:** Use character-rich display fonts for headers. You **may** use `system-ui` or clean sans-serifs for dense UI components (tables, inputs) where legibility represents peak UX. Apply negative letter-spacing (`tracking-tight`) to headlines.
-
-**Color & Materiality**
-- **BANNED:** The generic purple-to-blue linear gradient on white backgrounds.
-- **REQUIRED:** Sophisticated palettes. Soft, subtle grain (only where performance safe) or extremely subtle, tinted ambient shadows for depth instead of generic, harsh black `rgba(0,0,0,0.1)` drop shadows.
-
-**Layout & Composition**
-- **AVOID:** Endless rows of perfectly symmetrical 3-column bento grids where they don't serve the data.
-- **REQUIRED:** If the layout allows, introduce subtle offsets, varied image sizes, and intentional negative space. **Exception:** Data grids, login forms, and complex UI boards *should* utilize predictable grids for cognitive ease.
-
-**Component & Iconography**
-- **AVOID:** Default Lucide/Feather icons (Rockets, Shields) everywhere just to fill space.
-- **REQUIRED:** Use technical brackets, typography, subtle SVG strokes, or Phosphor icons. Rely on spacing and fine (`border-white/10`) lines to separate elements instead of heavy, boxed "cards."
-
-**Code & Micro-Interactions**
-- **AVOID:** Random glowing hover effects, AI-typical comments (`// AI-generated`), and jittery JS-based layout animations on mount.
-- **REQUIRED:** CSS-accelerated transforms (`transform`, `opacity`). Spring physics via fluid CSS (`transition-timing-function: cubic-bezier(...)`). Semantic HTML (`<article>`, `<aside>`). Realistic copy.
-
-## 6. CREATIVE CODING COMPENDIUM (Advanced Techniques)
-If `MOTION_INTENSITY` > 5, carefully incorporate these high-end concepts, ensuring they **do not block the main thread** or cause lag on mobile devices:
-
-- **Subtle Velocity Skew:** Text that slightly shifts weight or slant based on scroll.
-- **Marquee / Ticker:** A seamlessly looping band of text, hardware-accelerated.
-- **Refined Hover States:** Magnetic buttons that use lightweight CSS hover bounding logic, NOT heavy JS event listeners recalculating on every frame.
-- **Stagger Cascade:** Elements revealing cleanly, line-by-line, using low-cost CSS `animation-delay` rather than heavy JS intersection observers for every single DOM node.
-
-## 7. PRE-FLIGHT CHECK
-Before outputting code, verify:
-* Is it beautiful, premium, and High-Agency?
-* Is the mobile layout clean and responsive?
-* Did I avoid the generic Purple-Gradient-SaaS look?
-If yes, deploy the code.
+## 5. EXECUTION CHECKLIST
+Prior to finalizing code generation, parse your output against this checklist:
+- [ ] Is the tech stack explicitly executed (React+Tailwind or requested alternative)?
+- [ ] Are the padding/margin values bound to the `VISUAL_DENSITY` metric?
+- [ ] Did I enforce CSS hardware acceleration (`transform`/`opacity`) for the selected `MOTION_INTENSITY`?
+- [ ] Have I successfully purged generic `box-shadow` and un-tinted gradients?
