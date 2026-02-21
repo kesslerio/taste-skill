@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950 text-zinc-50 font-sans antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentOS | High-Agency AI</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            accent: {
+              DEFAULT: '#34d399', // emerald-400
+              hover: '#10b981', // emerald-500
+            },
+            zinc: {
+              950: '#09090b',
+              900: '#18181b',
+              800: '#27272a',
+              700: '#3f3f46',
+              600: '#52525b',
+              500: '#71717a',
+              400: '#a1a1aa',
+              300: '#d4d4d8',
+              50: '#fafafa',
+            }
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for Motion & Effects -->
+  <style>
+    :root {
+      --easing: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .tactile-btn {
+      transition: all 0.3s var(--easing);
+    }
+    .tactile-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .liquid-glass {
+      background: rgba(24, 24, 27, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--easing), transform 0.8s var(--easing);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+    .stagger-5 { transition-delay: 500ms; }
+  </style>
+</head>
+<body class="selection:bg-accent selection:text-zinc-950 overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 liquid-glass">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2 text-xl font-bold tracking-tight">
+        <i class="ph-fill ph-hexagon text-accent text-2xl"></i>
+        <span>Agent<span class="text-zinc-500">OS</span></span>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+        <a href="#features" class="hover:text-zinc-50 transition-colors">Features</a>
+        <a href="#compare" class="hover:text-zinc-50 transition-colors">Compare</a>
+        <a href="#testimonials" class="hover:text-zinc-50 transition-colors">Testimonials</a>
+        <a href="#pricing" class="hover:text-zinc-50 transition-colors">Pricing</a>
+      </div>
+      <button class="tactile-btn bg-zinc-50 text-zinc-950 px-4 py-2 text-sm font-semibold rounded hover:bg-zinc-200">
+        Deploy Agent
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="relative w-full px-4 max-w-7xl mx-auto pt-32 pb-12 md:pt-48 md:pb-24 grid md:grid-cols-12 gap-12 items-center">
+      <!-- Left content -->
+      <div class="md:col-span-7 flex flex-col items-start">
+        <div class="reveal active inline-flex items-center gap-2 px-3 py-1.5 rounded border border-white/10 text-xs font-mono text-zinc-300 mb-8 bg-zinc-900/50">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+          SYS.STATUS: ONLINE_AND_READY
+        </div>
+        
+        <h1 class="reveal active stagger-1 text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-none mb-6">
+          High-Agency <br>
+          <span class="text-zinc-500">Digital Employees.</span>
+        </h1>
+        
+        <p class="reveal active stagger-2 text-base md:text-lg text-zinc-400 leading-relaxed max-w-[55ch] mb-10">
+          Deploy autonomous AI agents that don't just chat—they execute. Integrated natively into your infrastructure with strict deterministic boundaries and flawless execution loops.
+        </p>
+        
+        <div class="reveal active stagger-3 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <button class="tactile-btn w-full sm:w-auto bg-accent text-zinc-950 px-8 py-4 text-sm font-semibold rounded hover:bg-accent-hover flex items-center justify-center gap-2">
+            Initialize Core <i class="ph-bold ph-arrow-right"></i>
+          </button>
+          <button class="tactile-btn w-full sm:w-auto text-zinc-300 px-8 py-4 text-sm font-medium rounded hover:text-white flex items-center justify-center gap-2 border border-zinc-800 hover:border-zinc-600 transition-all bg-zinc-900/50">
+            Read Docs
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right asset (HUD) -->
+      <div class="md:col-span-5 relative mt-16 md:mt-0 reveal active stagger-4">
+        <div class="absolute -inset-4 bg-accent/10 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
+        <div class="relative w-full rounded border border-zinc-800 bg-zinc-950 p-6 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden md:-ml-12 md:mt-12">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-zinc-900">
+             <div class="flex gap-2">
+               <div class="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
+               <div class="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
+               <div class="w-2.5 h-2.5 rounded-full bg-zinc-800"></div>
+             </div>
+             <span class="font-mono text-xs text-accent">TCP_CONNECTED</span>
+          </div>
+          
+          <div class="space-y-4 font-mono text-sm">
+            <div class="flex justify-between border-b border-zinc-900 pb-3">
+              <span class="text-zinc-500">Active Task</span>
+              <span class="text-zinc-300 text-right">Data_Ingestion_Pipeline</span>
+            </div>
+            <div class="flex justify-between border-b border-zinc-900 pb-3">
+              <span class="text-zinc-500">Latency</span>
+              <span class="text-zinc-300">12ms</span>
+            </div>
+            <div class="flex justify-between border-b border-zinc-900 pb-3">
+              <span class="text-zinc-500">Memory_Allocation</span>
+              <span class="text-accent">Optimized</span>
+            </div>
+            <div class="flex justify-between pb-2">
+              <span class="text-zinc-500">Status</span>
+              <span class="text-zinc-300">EXECUTING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Features -->
+    <section id="features" class="w-full px-4 max-w-7xl mx-auto py-12 md:py-24">
+      <div class="border-t border-zinc-900 pt-12 md:pt-24 mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 reveal">
+        <div class="max-w-[65ch]">
+          <h2 class="text-3xl md:text-5xl tracking-tighter leading-none mb-6">Execution Architecture</h2>
+          <p class="text-zinc-400 text-base leading-relaxed">Built for production workloads, not prototype chats. Our agents operate within strict deterministic enclosures.</p>
+        </div>
+        <a href="#" class="text-accent text-sm font-medium hover:text-accent-hover flex items-center gap-2 whitespace-nowrap group">
+          View full schema <i class="ph-bold ph-arrow-up-right transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 border-t border-zinc-900 pt-12">
+        <div class="reveal stagger-1 flex flex-col gap-4 group">
+          <i class="ph-light ph-cpu text-4xl text-zinc-500 group-hover:text-accent transition-colors"></i>
+          <h3 class="text-lg font-medium text-zinc-100">Deterministic Runtime</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">No hallucinated APIs. Agents compile execution paths statically before runtime.</p>
+        </div>
+        
+        <div class="reveal stagger-2 flex flex-col gap-4 lg:border-l border-zinc-900 lg:pl-8 group">
+          <i class="ph-light ph-shield-check text-4xl text-zinc-500 group-hover:text-accent transition-colors"></i>
+          <h3 class="text-lg font-medium text-zinc-100">Boundary Enclosures</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Agent state and memory are isolated. Data does not leak across execution environments.</p>
+        </div>
+
+        <div class="reveal stagger-3 flex flex-col gap-4 sm:border-t sm:pt-16 lg:border-t-0 lg:pt-0 lg:border-l border-zinc-900 lg:pl-8 group">
+          <i class="ph-light ph-lightning text-4xl text-zinc-500 group-hover:text-accent transition-colors"></i>
+          <h3 class="text-lg font-medium text-zinc-100">Zero-Latency Hooks</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Our proprietary edge-hosted webhooks allow for sub-50ms reaction times to signals.</p>
+        </div>
+
+        <div class="reveal stagger-4 flex flex-col gap-4 sm:border-t sm:pt-16 lg:border-t-0 lg:pt-0 lg:border-l border-zinc-900 lg:pl-8 group">
+          <i class="ph-light ph-graph text-4xl text-zinc-500 group-hover:text-accent transition-colors"></i>
+          <h3 class="text-lg font-medium text-zinc-100">Telemetry Stream</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Absolute observability. Stream every token, tool call, and state mutation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Comparison -->
+    <section id="compare" class="w-full px-4 max-w-7xl mx-auto py-12 md:py-24 border-t border-zinc-900">
+      <div class="grid md:grid-cols-12 gap-12 lg:gap-24">
+        <div class="md:col-span-4 reveal">
+          <h2 class="text-3xl md:text-5xl tracking-tighter leading-none mb-6">vs Generic API Models</h2>
+          <p class="text-zinc-400 text-base leading-relaxed">
+            Raw language models are impressive text generators. They are not reliable software engineers. AgentOS bridges the gap.
+          </p>
+        </div>
+
+        <div class="md:col-span-8 font-mono text-sm w-full divide-y divide-zinc-900">
+          <div class="grid grid-cols-7 py-6 reveal stagger-1 gap-4 items-center">
+            <div class="col-span-3 text-zinc-500">Memory State</div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-zinc-300">
+              <span class="text-[10px] uppercase text-zinc-600 font-sans tracking-widest font-bold">Generic LLM</span>
+              <span>Episodic Context</span>
+            </div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-accent">
+              <span class="text-[10px] uppercase text-accent/60 font-sans tracking-widest font-bold">AgentOS</span>
+              <span>Vector Graph Persistence</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-7 py-6 reveal stagger-2 gap-4 items-center">
+            <div class="col-span-3 text-zinc-500">Tool Use</div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-zinc-300">
+               <span>Best-effort JSON</span>
+            </div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-accent">
+              <span>Strict Schema Valiation</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-7 py-6 reveal stagger-3 gap-4 items-center">
+            <div class="col-span-3 text-zinc-500">Failure Mode</div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-zinc-300">
+               <span>Silent Hallucination</span>
+            </div>
+            <div class="col-span-2 flex flex-col gap-1 items-start text-accent">
+              <span>Automatic Retry Loop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Testimonials -->
+    <section id="testimonials" class="w-full px-4 max-w-7xl mx-auto py-12 md:py-32 border-t border-zinc-900">
+      <h2 class="text-3xl md:text-5xl tracking-tighter leading-none mb-16 md:mb-24 reveal">Network Feedback</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <div class="relative pl-6 border-l border-zinc-900 py-2 reveal stagger-1 mt-8 md:mt-0">
+          <i class="ph-fill ph-quotes text-zinc-800 text-4xl absolute -top-8 -left-5 bg-zinc-950 px-1"></i>
+          <p class="text-lg text-zinc-300 leading-relaxed mb-6 font-medium">"We replaced a 5-person manual triage team with two AgentOS instances. Error rates dropped to zero within 48 hours."</p>
+          <div class="flex items-center gap-3">
+             <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+             <div>
+               <div class="font-medium text-sm text-zinc-100">Sarah Jenkins</div>
+               <div class="text-[11px] text-zinc-500 font-mono tracking-wide uppercase">CTO, Nexus Corp.</div>
+             </div>
+          </div>
+        </div>
+
+        <div class="relative pl-6 border-l border-zinc-900 py-2 reveal stagger-2 md:-mt-12 lg:-mt-16">
+          <i class="ph-fill ph-quotes text-zinc-800 text-4xl absolute -top-8 -left-5 bg-zinc-950 px-1"></i>
+          <p class="text-lg text-zinc-300 leading-relaxed mb-6 font-medium">"The strict deterministic enclosures mean we can actually trust agents to modify our live database schemas without fear."</p>
+          <div class="flex items-center gap-3">
+             <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+             <div>
+               <div class="font-medium text-sm text-zinc-100">Marcus Vance</div>
+               <div class="text-[11px] text-zinc-500 font-mono tracking-wide uppercase">Lead DevOps, FinTech</div>
+             </div>
+          </div>
+        </div>
+
+        <div class="relative pl-6 border-l border-zinc-900 py-2 reveal stagger-3 mt-12 md:mt-8">
+          <i class="ph-fill ph-quotes text-zinc-800 text-4xl absolute -top-8 -left-5 bg-zinc-950 px-1"></i>
+          <p class="text-lg text-zinc-300 leading-relaxed mb-6 font-medium">"AgentOS is exactly what we needed. High agency, low risk. A true engineering-grade tool."</p>
+          <div class="flex items-center gap-3">
+             <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+             <div>
+               <div class="font-medium text-sm text-zinc-100">Elara Noles</div>
+               <div class="text-[11px] text-zinc-500 font-mono tracking-wide uppercase">VP Eng, DataWorks</div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Pricing -->
+    <section id="pricing" class="w-full px-4 max-w-7xl mx-auto py-12 md:py-24 border-t border-zinc-900">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+        <h2 class="text-3xl md:text-5xl tracking-tighter leading-none max-w-[15ch]">Compute Allocation</h2>
+        <p class="text-zinc-400 text-base max-w-[40ch]">Transparent pricing based on actual execution cycles. No per-seat licenses.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-px bg-zinc-900 border-y border-zinc-900 reveal stagger-1">
+         <div class="bg-zinc-950 p-8 md:p-16">
+           <div class="font-mono text-[10px] text-accent mb-6 tracking-widest border border-accent/20 px-2 py-1 inline-block rounded uppercase">Start_Up</div>
+           <div class="flex items-baseline gap-2 mb-10">
+              <span class="text-5xl md:text-6xl font-semibold tracking-tighter">$49</span>
+              <span class="text-zinc-500 text-sm font-medium">/ month</span>
+           </div>
+           
+           <ul class="space-y-5 text-zinc-400 mb-12 text-sm justify-between">
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-accent"></i> 100,000 Execution Cycles</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-accent"></i> 3 Concurrent Agents</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-accent"></i> Standard Webhook Latency</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-accent"></i> 24h Telemetry Log</li>
+           </ul>
+           
+           <button class="tactile-btn w-full bg-zinc-100 text-zinc-950 py-4 rounded font-semibold text-sm hover:bg-zinc-300">
+             Deploy Starter
+           </button>
+         </div>
+
+         <div class="bg-zinc-950 p-8 md:p-16">
+           <div class="font-mono text-[10px] text-zinc-300 mb-6 tracking-widest border border-zinc-800 bg-zinc-900 px-2 py-1 inline-block rounded uppercase">Enterprise_Core</div>
+           <div class="flex items-baseline gap-2 mb-10">
+              <span class="text-5xl md:text-6xl font-semibold tracking-tighter">$490</span>
+              <span class="text-zinc-500 text-sm font-medium">/ month</span>
+           </div>
+           
+           <ul class="space-y-5 text-zinc-400 mb-12 text-sm">
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-zinc-100"></i> Infinite Execution Cycles</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-zinc-100"></i> Unlimited Concurrency</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-zinc-100"></i> Sub-50ms Edge Webhooks</li>
+             <li class="flex items-center gap-3 border-b border-zinc-900/50 pb-2"><i class="ph-bold ph-check text-zinc-100"></i> VPC Deployment & SSO</li>
+           </ul>
+           
+           <button class="tactile-btn w-full bg-zinc-900 border border-zinc-800 text-zinc-100 py-4 rounded font-semibold text-sm hover:bg-zinc-800">
+             Contact Sales
+           </button>
+         </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Footer -->
+    <footer class="w-full px-4 max-w-7xl mx-auto py-12 md:py-24 border-t border-zinc-900 mt-12 mb-12 reveal">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-16">
+        <div class="col-span-2 lg:col-span-2 flex flex-col items-start gap-4">
+          <div class="flex items-center gap-2 text-xl font-bold tracking-tight mb-2">
+            <i class="ph-fill ph-hexagon text-accent text-2xl"></i>
+            <span>Agent<span class="text-zinc-500">OS</span></span>
+          </div>
+          <p class="text-sm text-zinc-500 pr-8 leading-relaxed">High-Agency Digital Employees. Overriding default capabilities with deterministic architectures.</p>
+          <div class="font-mono text-[10px] tracking-widest text-zinc-700 mt-6 uppercase">SYS.GEN 2026 // NEURAL.LINK</div>
+        </div>
+        
+        <div class="flex flex-col gap-4 text-sm">
+          <div class="font-semibold text-zinc-100 mb-2">Platform</div>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Agents</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Webhooks</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Telemetry</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Security</a>
+        </div>
+        
+        <div class="flex flex-col gap-4 text-sm">
+          <div class="font-semibold text-zinc-100 mb-2">Resources</div>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Documentation</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">API Reference</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Community</a>
+          <a href="#" class="text-zinc-500 hover:text-zinc-300 transition-colors">Blog</a>
+        </div>
+
+        <div class="col-span-2 flex flex-col gap-6 text-sm items-start font-mono">
+          <div class="font-sans font-semibold text-zinc-100 mb-2 text-sm">System Status</div>
+          <div class="w-full flex justify-between items-center pb-3 border-b border-zinc-900 text-xs">
+            <span class="text-zinc-500">SYS.API</span>
+            <span class="text-accent flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> ONLINE</span>
+          </div>
+          <div class="w-full flex justify-between items-center pb-3 border-b border-zinc-900 text-xs">
+            <span class="text-zinc-500">EXEC_RUNNERS</span>
+            <span class="text-accent flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> ONLINE</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Intersection Observer for Scroll Reveals -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      });
+
+      revealElements.forEach(el => {
+        // Observer hook
+        if (!el.classList.contains('active')) {
+          revealObserver.observe(el);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
