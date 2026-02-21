@@ -1,62 +1,108 @@
-# antislopfrontend
+# Anti-Slop Frontend Skill
 
-> A Creative Technologist skill for AI agents. Build interfaces that feel like physical objects, avant-garde magazines, or precision instruments. **Eradicate AI Slop.**
+A skill for AI coding agents to build better frontend interfaces. The goal is to avoid standard, generic "AI slop" designs and create websites that look unique, professional, and well-crafted.
 
 ---
 
-## What is this?
+## How It Works
 
-This is an **AI Agent Skill** — a structured set of instructions, patterns, and examples that teaches an AI coding assistant to produce frontend code that transcends generic templates.
+This repository contains **1 Overall Skill** and **4 Sub-Skills**. The overall skill sets the baseline, while the sub-skills give the agent specific design styles to follow based on the user's request.
 
-The skill enforces:
-- **Anti-pattern guards** against the most common "AI Slop" failures
-- **Three distinct aesthetic modes**: Editorial, Precision Instrument, Installation
-- **Advanced techniques**: Kinetic typography, immersive scrolling, magnetic micro-interactions
-- **A quality assurance checklist** that runs before every output
+### The Overall Skill
+The core `SKILL.md` teaches the agent basic rules:
+- **No generic UI:** Stop using default gradients, basic glassmorphism, and centered text everywhere.
+- **Better feel:** Add texture and depth to the designs.
+- **Good typography:** Use strong font pairs and clear text sizes instead of browser defaults.
 
-## Structure
+---
 
+## The 4 Sub-Skills
+
+The agent will choose one of these four sub-skills based on what you ask it to build:
+
+### 1. Editorial & Brutalism
+**Best for:** Portfolios, blogs, magazines, and text-heavy sites.
+**Look & Feel:** Like a printed fashion magazine or raw HTML.
+**Key elements:** Asymmetrical grids, huge text, high black-and-white contrast, and visible borders.
+
+### 2. Precision & Utilitarian
+**Best for:** Dashboards, tools, SaaS apps, and calculators.
+**Look & Feel:** Like a physical tool, a classic Braun calculator, or Teenage Engineering gear.
+**Key elements:** Small legible monospace fonts, subtle neumorphism for buttons, monochromatic colors with one bright accent (like neon orange).
+
+### 3. Cinematic & Installation
+**Best for:** Product launches, landing pages, and interactive showcases.
+**Look & Feel:** Like a digital art piece or a high-end movie experience.
+**Key elements:** Smooth scrolling, 3D or parallax fade effects, full-screen images, and hidden navigation until you need it.
+
+### 4. Motion & Micro-Interactions
+**Best for:** Interactive web apps, complex menus, and dynamic buttons.
+**Look & Feel:** Like a video game engine with real physics.
+**Key elements:** Spring physics instead of basic animations, magnetic buttons that follow the mouse, and visual feedback when clicking.
+
+---
+
+## Output Examples
+
+Here is what you can expect the AI agent to generate for each sub-skill:
+
+### Example 1: Editorial Portfolio (Sub-Skill 1)
+- **What it generates:** A webpage with huge, left-aligned text and no rounded corners. Images might have a slight grain effect. It feels like reading a modern newspaper.
+- **Code hints:** `font-family: 'Helvetica Neue', Arial, sans-serif;`, `border: 1px solid black;`, `text-transform: uppercase;`.
+
+### Example 2: Synth Dashboard (Sub-Skill 2)
+- **What it generates:** A settings menu that looks like an analog synthesizer. Buttons look pressed in when clicked, like physical hardware switches.
+- **Code hints:** Real inset shadows, dark themes with bright orange highlights, grid backgrounds, and monospace fonts.
+
+### Example 3: Cinematic Product Launch (Sub-Skill 3)
+- **What it generates:** A completely black screen at the start. As you scroll, a large product image slowly fades in from the dark.
+- **Code hints:** `background: #000;`, very slow transitions, fading with opacity and blur (`filter: blur(20px)` to `blur(0)`).
+
+### Example 4: Physics Button (Sub-Skill 4)
+- **What it generates:** An "Add to Cart" button that bends slightly toward your mouse as you hover. When clicked, it bounces back realistically.
+
+---
+
+## Quick Installation (Terminal)
+
+You can easily install this skill directly into your project or your AI's global skills folder using your terminal.
+
+*(Note: Replace `YOUR_GITHUB_USERNAME` with your actual username once you publish the repository.)*
+
+### 1. Project-Level Installation (Recommended)
+Run this command in the root folder of your current project. This gives the AI agent access to the skill for just this project.
+
+```bash
+git clone https://github.com/YOUR_GITHUB_USERNAME/antislopfrontend.git .agent/skills/antislopfrontend
 ```
-antislopfrontend/
-├── SKILL.md                          ← Core skill instructions (AI agent reads this)
-├── README.md                         ← This file
-├── examples/
-│   ├── mode-a-editorial.md           ← Editorial mode implementation patterns
-│   ├── mode-b-precision.md           ← Precision Instrument patterns
-│   └── mode-c-installation.md        ← Installation/experience patterns
-└── resources/
-    └── anti-patterns-quick-ref.md    ← Quick reference: what's forbidden & what to use instead
+
+**Example AI Prompt:**
+> "Look at the Anti-Slop Skill in my `.agent/skills` folder and build a landing page for a coffee brand using Sub-Skill 1."
+
+### 2. Global Installation
+If your AI agent supports a global skills directory, run these commands to install it permanently across all your projects.
+
+**Mac / Linux:**
+```bash
+git clone https://github.com/YOUR_GITHUB_USERNAME/antislopfrontend.git ~/.agent/skills/antislopfrontend
 ```
 
-## How to Use with an AI Agent
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/YOUR_GITHUB_USERNAME/antislopfrontend.git "$HOME\.agent\skills\antislopfrontend"
+```
 
-Drop this repo into your agent's skill directory (`.agent/skills/anti-slop-frontend/`). The agent will automatically read `SKILL.md` when frontend work is requested.
+---
 
-### Trigger Examples
+## How It Works Internally
 
-> "Build a portfolio landing page" → Agent picks **Mode A: Editorial**  
-> "Create a metrics dashboard" → Agent picks **Mode B: Precision Instrument**  
-> "Make a product launch page" → Agent picks **Mode C: Installation**
+When the agent starts a task, it follows a simple process:
+1. **Initial Review:** The agent reads `SKILL.md` to understand the general quality standards.
+2. **Style Selection:** Based on your request, it picks one of the **4 Sub-Skills** (e.g., if you want a dashboard, it picks *Precision & Utilitarian*).
+3. **Execution:** It uses the code hints and examples in the `examples/` folder to build your interface without using generic templates.
 
-## The Three Modes
-
-| Mode | For | Vibe |
-|------|-----|------|
-| **A — Editorial** | Portfolios, blogs, content | Printed fashion magazine, come alive |
-| **B — Precision Instrument** | Dashboards, tools, data | Braun calculator, Teenage Engineering |
-| **C — Installation** | Landing pages, experiences | Browser as a canvas for art |
-
-## The Forbidden List (Quick)
-
-- ❌ Purple-to-blue gradients
-- ❌ Neon glow box-shadows  
-- ❌ Glassmorphism as default
-- ❌ Bento grids
-- ❌ Pill badges
-- ❌ White card + gray border + drop shadow
-- ❌ Everything centered
-- ❌ Rocket/shield icons
+---
 
 ## License
 
-MIT — use freely, remix aggressively.
+MIT - use freely, remix aggressively.
