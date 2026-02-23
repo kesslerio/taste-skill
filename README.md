@@ -4,6 +4,14 @@ This project gives your AI (like in Antigravity, Cursor, Codex, Claude Code) goo
 
 Right now, this whole system runs on just one single file: `SKILL.md`.
 
+
+## IMPORTANT: Feedback & Contributions
+I’d love to hear your thoughts! If you have suggestions or find any bugs:
+Open a Pull Request or Issue right here on GitHub.
+Shoot me a DM on x.com/lexnlin
+Or email me at: hello@learn2vibecode.dev
+
+
 ## How to Install
 
 You don't need to clone this whole project or do any complex setup. You just need the file.
