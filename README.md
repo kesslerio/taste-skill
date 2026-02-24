@@ -2,7 +2,7 @@
 
 This project gives your AI (like in Antigravity, Cursor, Codex, Claude Code) good taste. It stops the AI from generating boring, generic, "slop" code and forces it to build modern, high-end interfaces.
 
-Right now, this whole system runs on just one single file: `SKILL.md`.
+This skill now uses a compact `SKILL.md` dispatcher plus `references/*.md` for detailed guidance. Install the full folder, not just one file.
 
 
 ## IMPORTANT: Feedback & Contributions
@@ -17,13 +17,29 @@ Or email me at: hello@learn2vibecode.dev
 
 ## How to Install
 
-You don't need to clone this whole project or do any complex setup. You just need the file.
+Use the full skill folder so the dispatcher can load its references.
 
-1. Download the `SKILL.md` file from this repository.
-2. Put it into your project folder.
-3. Tell your AI (in your prompt or chat): *"Please read and strictly follow the rules in `SKILL.md`."* (In editors like Cursor, you can just `@SKILL.md`).
+Required files:
+- `SKILL.md`
+- `references/design-rules.md`
+- `references/motion.md`
+- `references/anti-patterns.md`
+- `references/bento-recipes.md`
+- `references/checklist.md`
 
-That's it. The AI will read the file and instantly upgrade how it writes frontend code.
+Quick install:
+```bash
+git clone https://github.com/kesslerio/taste-skill.git
+# copy or symlink the entire folder into your skills directory
+```
+
+If you only copy `SKILL.md`, you will lose most strict guidance and quality guardrails.
+
+1. Clone or download the full repository folder.
+2. Copy or symlink the entire `taste-skill/` folder into your skills directory.
+3. Tell your AI: *"Please read and follow `SKILL.md` and its `references/*.md` files."*
+
+That's it. The AI will load the dispatcher plus references and apply the full rule set.
 
 ## The 3 Control Dials
 
