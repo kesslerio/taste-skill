@@ -1,0 +1,36 @@
+name: design-taste-frontend
+summary: Strict frontend taste guardrail layer that prevents generic AI UI output and enforces production-safe design constraints.
+description: >-
+  Discoverability metadata for the taste-skill repository. This skill is the strict
+  guardrail/compliance layer for frontend UI generation: anti-slop rules, interaction
+  quality gates, motion/performance constraints, and visual discipline.
+aliases:
+  - taste-skill
+  - taste frontend
+  - frontend taste
+  - design taste frontend
+  - anti-slop frontend
+  - ui taste guardrails
+keywords:
+  - taste
+  - frontend
+  - ui
+  - ux
+  - design systems
+  - anti-slop
+  - strict guardrails
+  - quality gates
+  - production-safe ui
+  - motion constraints
+  - layout discipline
+  - component architecture
+  - react
+  - nextjs
+  - tailwind
+category: frontend
+layer: strict-guardrails
+composes_with:
+  - frontend-design-ultimate
+notes:
+  - Keep SKILL frontmatter name as design-taste-frontend for compatibility.
+  - Prefer composing this with frontend-design-ultimate via a wrapper skill for one-command UX.
