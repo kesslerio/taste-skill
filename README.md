@@ -24,6 +24,7 @@ Required contents:
 - `references/anti-patterns.md`
 - `references/bento-recipes.md`
 - `references/checklist.md`
+- `references/inspiration-patterns.md` (non-critical catalog)
 
 ## Composition
 

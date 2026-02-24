@@ -54,5 +54,6 @@ Use this skill for React/Next.js UI generation, redesigns, and component work wh
 - Banned patterns and anti-slop filters: [references/anti-patterns.md](references/anti-patterns.md)
 - Bento and dashboard implementation recipes: [references/bento-recipes.md](references/bento-recipes.md)
 - Final pre-flight QA gates: [references/checklist.md](references/checklist.md)
+- Long-form inspiration catalog (non-critical idea bank): [references/inspiration-patterns.md](references/inspiration-patterns.md)
 
 Apply the hard non-negotiables first, then use the routed references by priority: Critical -> Defaults -> Optional.
