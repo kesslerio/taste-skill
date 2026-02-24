@@ -35,11 +35,11 @@ git clone https://github.com/kesslerio/taste-skill.git
 
 If you only copy `SKILL.md`, you will lose most strict guidance and quality guardrails.
 
-1. Download the `SKILL.md` file from this repository.
-2. Put it into your project folder.
-3. Tell your AI (in your prompt or chat): *"Please read and strictly follow the rules in `SKILL.md`."* (In editors like Cursor, you can just `@SKILL.md`).
+1. Clone or download the full repository folder.
+2. Copy or symlink the entire `taste-skill/` folder into your skills directory.
+3. Tell your AI: *"Please read and follow `SKILL.md` and its `references/*.md` files."*
 
-That's it. The AI will read the file and instantly upgrade how it writes frontend code.
+That's it. The AI will load the dispatcher plus references and apply the full rule set.
 
 ## The 3 Control Dials
 
