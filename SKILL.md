@@ -48,6 +48,28 @@ Use this skill for React/Next.js UI generation, redesigns, and component work wh
   - `4-7`: standard app spacing
   - `8-10`: compact cockpit density; numbers in monospace
 
+## Signs of Taste in Web UI (General Heuristics)
+Apply these as default quality targets unless the product context explicitly requires otherwise.
+
+- Interaction latency target: visible UI responses should complete in ~100ms when technically feasible.
+- Do not rely on product tours as the primary orientation mechanism.
+- Keep routes/slugs short and human-readable; avoid exposing raw UIDs in primary user-facing URLs.
+- Preserve persistent, resumable state across sessions where it improves continuity.
+- Keep the visible palette restrained (generally <=3 primary colors, excluding semantic status states).
+- Avoid visible scrollbars in polished primary surfaces while preserving accessible scrolling behavior.
+- Keep core navigation depth within 3 steps for primary user goals.
+- Ensure logo/brand surfaces can provide copyable SVG + basic brand kit access when relevant.
+- Always include skeleton loading states for async surfaces.
+- Support practical clipboard workflows (copy + paste) where users expect them.
+- Use larger hit targets for buttons/inputs (touch and mouse-friendly).
+- Cancellation should be honest and one-click when possible; avoid dark patterns.
+- Include command palette support (`Cmd/Ctrl + K`) for app-like products when appropriate.
+- Keep tooltips minimal; favor clear labels and inline context first.
+- Keep microcopy in active voice; target short sentences (default <=7 words) for UI text.
+- Prefer optical alignment over strict geometric centering when they conflict.
+- Optimize content/layout for left-to-right reading flow by default.
+- Include reassurance around loss-risk moments (deletes, cancels, unsaved changes, irreversible actions).
+
 ## Routing
 - Core layout, typography, color, architecture, and perf defaults: [references/design-rules.md](references/design-rules.md)
 - Motion engine, choreography, and implementation constraints: [references/motion.md](references/motion.md)
